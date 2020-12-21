@@ -5,7 +5,7 @@
         <h1>Bienvenue sur la page des Champions</h1>
 
 
-        <ul class="list-inline">
+        <ul class="list-inline list-unstyled">
             <li v-bind:key="index" v-for="(champion, index) in allChamps"  class="list-inline-item">
                 <!-- <router-link :to="`/champions/${index}`">
                     <div class="card m-2">
@@ -13,13 +13,13 @@
                         <img :src="url_image +  champion.id + format_img">
                     </div>
                 </router-link> -->
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width: 16rem;">
                         <img :src="url_image + champion.id + format_img" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{champion.id}}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{champion.title}}</h6>
-                            <p class="card-text">{{champion.tags}}</p>
-                            <router-link :to="`/champions/${index}`" class="btn btn-primary">
+                            <p class="card-text">{{ splitString(champion.blurb, txt_limit)}}</p>
+                            <router-link :to="`/champions/${champion.name}`" class="btn btn-primary">
                                 Fiche détaillée
                             </router-link>
                         </div>
@@ -42,7 +42,8 @@ export default {
         return {
             allChamps: [],
             url_image: 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/',
-            format_img: '_0.jpg'
+            format_img: '_0.jpg',
+            txt_limit: '.'
         }
     },
     methods: {
