@@ -9,5 +9,5 @@ export default [
     {path: '/leagueoflegends', component: Leagueoflegends},
     {path: '/legendsofruneterra', component: Legendsofruneterra},
     {path: '/champions', component: Champions},
-    {path: '/champions/:name', component: Champion}
+    {path: '/champions/:id', component: Champion}
 ]
